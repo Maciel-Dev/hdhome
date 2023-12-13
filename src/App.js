@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { ChangeEvent, FC, useState } from 'react';
+import { InputText } from 'primereact/inputtext';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import './style.css';
+import 'primereact/resources/themes/bootstrap4-dark-blue/theme.css';
 
-export default App;
+export const App: FC = () => {
+    const [value, setValue] = useState('');
+    return (
+        <main>
+            <h1>Playground</h1>
+            <InputText
+                value={value}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setValue(e.target.value)
+                }
+            />
+            <p>{value}</p>
+        </main>
+    );
+};
